@@ -1,0 +1,207 @@
+.game-shell {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #8e4b2c;
+  margin-bottom: 10px;
+}
+
+.description {
+  max-width: 60ch;
+}
+
+.status-card {
+  min-width: 210px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff0d6, #ffd2a8);
+  color: #412312;
+  box-shadow: 0 18px 40px rgba(96, 49, 17, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.status-card span {
+  font-size: 0.95rem;
+}
+
+.status-card strong {
+  font-size: 1.15rem;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 24px;
+  align-items: start;
+}
+
+.board-panel,
+.help-panel {
+  border-radius: 28px;
+  border: 1px solid rgba(118, 76, 40, 0.12);
+  background: rgba(255, 250, 243, 0.9);
+  box-shadow: 0 24px 60px rgba(84, 52, 30, 0.08);
+}
+
+.board-panel {
+  padding: 18px;
+}
+
+.board-frame {
+  position: relative;
+  min-height: 720px;
+  overflow: hidden;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 216, 176, 0.95), transparent 32%),
+    linear-gradient(160deg, #fffaf2 0%, #f7e4cb 100%);
+}
+
+.board {
+  position: absolute;
+  left: 22px;
+  top: 22px;
+  width: min(68%, 640px);
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  border: 3px solid rgba(107, 63, 35, 0.3);
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.slot {
+  border: 1px dashed rgba(127, 88, 54, 0.3);
+  display: grid;
+  place-items: center;
+  color: rgba(102, 72, 47, 0.55);
+  font-weight: 700;
+  font-size: clamp(0.95rem, 1vw, 1.15rem);
+}
+
+.piece {
+  position: absolute;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+  transition:
+    transform 0.14s ease,
+    filter 0.18s ease,
+    left 0.18s ease,
+    top 0.18s ease;
+}
+
+.piece:hover {
+  transform: scale(1.02);
+  filter: drop-shadow(0 16px 22px rgba(91, 47, 18, 0.22));
+}
+
+.piece:active {
+  cursor: grabbing;
+}
+
+.piece img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 18px rgba(55, 28, 9, 0.18));
+}
+
+.piece--placed {
+  cursor: default;
+}
+
+.piece--placed:hover {
+  transform: none;
+}
+
+.help-panel {
+  padding: 24px;
+  text-align: left;
+}
+
+.help-panel h2 {
+  margin-bottom: 14px;
+}
+
+.help-panel p {
+  margin-bottom: 14px;
+}
+
+.formula {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: #fff4e4;
+  color: #5b351a;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.94rem;
+}
+
+.tip {
+  color: #7a5336;
+}
+
+@media (max-width: 980px) {
+  .game-shell {
+    padding: 20px;
+  }
+
+  .game-header,
+  .workspace {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .status-card {
+    min-width: 0;
+  }
+
+  .board-frame {
+    min-height: 980px;
+  }
+
+  .board {
+    width: calc(100% - 28px);
+    left: 14px;
+    top: 14px;
+  }
+}
+
+@media (max-width: 720px) {
+  .board-frame {
+    min-height: 1280px;
+  }
+
+  .board {
+    width: calc(100% - 20px);
+    left: 10px;
+    top: 10px;
+  }
+}

@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* Quitamos el margen por defecto para que Tailwind controle todo el layout. */
+body {
+  margin: 0;
+}
+
+/* Permitimos que la aplicacion tenga altura completa. */
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+/* Heredamos fuente y evitamos cambios raros en formularios. */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
